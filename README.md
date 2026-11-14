@@ -21,6 +21,26 @@ language models show their working.
 - **[DS3 Advisor](https://github.com/mozartdiniz/ds3-advisor)**: watches a Dark Souls III save file, decrypts it and parses the event flags, then warns you before you break an NPC questline. The advice is deterministic; Claude only phrases it.
 - **[DiffusionAPI](https://github.com/mozartdiniz/DiffusionAPI)**: a FastAPI service with a job queue for Stable Diffusion 1.5 and SDXL on a local GPU.
 
+#### 🤝 How I work with AI
+
+Most of the recent code here was written with Claude Code. I use agents extensively, but I don't
+outsource engineering judgement.
+
+- **I keep the decisions.** I decide what gets built, how it should work and when it's done. Agents
+  handle much of the implementation. Architectural decisions and project progress are recorded in files
+  like vouch's [DECISIONS.md](https://github.com/mozartdiniz/vouch/blob/main/DECISIONS.md) and Amadeuz's
+  [PROGRESS.md](https://github.com/mozartdiniz/Amadeuz/blob/main/PROGRESS.md).
+- **I verify what agents produce.** I don't trust an answer just because a model sounds confident.
+  [vouch](https://github.com/mozartdiniz/vouch) is an attempt to make that principle enforceable:
+  functions either return values that satisfy their contracts, or they refuse. I apply the same thinking
+  when evaluating models, using dedicated test batteries rather than relying on impressions.
+- **I keep context outside conversations.** Project state lives in Git and shared notes, not in an
+  ever-longer chat history. That lets agents pick up work in fresh sessions and on different machines
+  without depending on conversational memory.
+- **I match models to the work.** Self-contained tasks with verifiable outputs can go to local models
+  running on my own hardware. More demanding reasoning and implementation work goes to frontier models.
+  Results are used only when they pass the relevant checks.
+
 #### 🕰️ Earlier
 
 Before all this it was mostly frontend: React, Angular, Webpack and Node, going back to the
