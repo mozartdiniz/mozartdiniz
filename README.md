@@ -27,13 +27,15 @@ Most of the recent code here was written with Claude Code. I use agents extensiv
 outsource engineering judgement.
 
 - **I keep the decisions.** I decide what gets built, how it should work and when it's done. Agents
-  handle much of the implementation. Architectural decisions and project progress are recorded in files
+  handle much of the implementation. I design the architecture, review and debug what agents write,
+  and write the parts that need it myself. Architectural decisions and project progress are recorded in files
   like vouch's [DECISIONS.md](https://github.com/mozartdiniz/vouch/blob/main/DECISIONS.md) and Amadeuz's
   [PROGRESS.md](https://github.com/mozartdiniz/Amadeuz/blob/main/PROGRESS.md).
 - **I verify what agents produce.** I don't trust an answer just because a model sounds confident.
   [vouch](https://github.com/mozartdiniz/vouch) is an attempt to make that principle enforceable:
   functions either return values that satisfy their contracts, or they refuse. I apply the same thinking
-  when evaluating models, using dedicated test batteries rather than relying on impressions.
+  when evaluating models, using a [1,418-case eval battery](https://github.com/mozartdiniz/vouch-lab)
+  that counts confident wrong answers as well as correct ones, rather than relying on impressions.
 - **I keep context outside conversations.** Project state lives in Git and shared notes, not in an
   ever-longer chat history. That lets agents pick up work in fresh sessions and on different machines
   without depending on conversational memory.
